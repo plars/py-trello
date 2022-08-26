@@ -769,6 +769,10 @@ class Card(TrelloBase):
             cl.add_checklist_item(name, checked)
 
         self.fetch()
+        try:
+            self.countCheckLists += 1
+        except AttributeError:
+            self.countCheckLists = 1
         return cl
 
     def _set_due_complete(self, is_complete):
